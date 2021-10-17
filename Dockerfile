@@ -16,9 +16,7 @@ ENV PATH /usr/share/maven/bin
 RUN export PATH
 
 # Install openjdk
-RUN apt install openjdk-8-jdk -y
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-RUN export JAVA_HOME
+RUN apt install default-jdk -y
 
 # Install docker:latest
 RUN sudo apt install \
