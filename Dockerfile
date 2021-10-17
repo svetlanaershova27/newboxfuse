@@ -22,7 +22,7 @@ CMD ["catalina.sh", "run"]
 
 FROM openjdk:16-alpine3.13
 # Install docker:latest
-RUN sudo apt install \
+RUN apt install \
         apt-transport-https \
         ca-certificates \
         curl \
