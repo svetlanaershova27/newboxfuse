@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get -y install openssh-client
 
 # Configure ssh client
-COPY id_rsa.pub /root/.ssh/id_rsa
+COPY id_rsa.pub /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa.pub
 
 # Install maven 3.8.3
