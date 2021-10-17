@@ -15,9 +15,12 @@ RUN apt install maven -y
 ENV PATH /usr/share/maven/bin
 RUN export PATH
 
-# Install openjdk
-RUN apt install default-jdk -y
+# Install tomcat9
+RUN apt install tomcat9 -y
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
 
+FROM openjdk:16-alpine3.13
 # Install docker:latest
 RUN sudo apt install \
         apt-transport-https \
@@ -30,10 +33,6 @@ RUN echo \
       "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-# Install tomcat9
-RUN apt install tomcat9 -y
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
 # Clear cache
 RUN apt-get clean
 
