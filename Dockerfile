@@ -16,7 +16,7 @@ ENV PATH /usr/share/maven/bin
 RUN export PATH
 
 # Install tomcat9
-RUN apt install tomcat -y
+FROM tomcat:9.0-alpine
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
 
