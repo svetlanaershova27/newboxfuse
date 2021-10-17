@@ -26,7 +26,8 @@ WORKDIR /usr/src/myapp
 
 # Install docker
 RUN wget 'https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.2.10-3_amd64.deb'
-RUN dpkg -i etc/docker/containerd.io_1.2.10-3_amd64.deb
+RUN curl -fsSL https://get.docker.com -o get-docker.sh
+RUN sh get-docker.sh
 # Clear cache
 RUN apt-get clean
 
