@@ -16,14 +16,14 @@ ENV PATH /usr/share/maven/bin
 RUN export PATH
 
 # Install openjdk
-RUN apt-get install -y openjdk-8-jdk && \
-        apt-get install -y ant && \
+RUN apt  install -y openjdk-8-jdk && \
+        apt install -y ant && \
         apt-get clean;
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
 # Install docker:latest
-RUN sudo apt-get install \
+RUN sudo apt install \
         apt-transport-https \
         ca-certificates \
         curl \
