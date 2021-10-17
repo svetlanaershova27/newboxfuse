@@ -23,8 +23,7 @@ CMD ["catalina.sh", "run"]
 FROM openjdk:11
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
-RUN javac Main.java
-CMD ["java", "Main"]
+
 # Install docker
 RUN apt-get install docker-ce docker-ce-cli containerd.io
 # Clear cache
