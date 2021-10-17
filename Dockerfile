@@ -22,7 +22,7 @@ CMD ["catalina.sh", "run"]
 
 FROM openjdk:8u151-stretch
 # Install docker:latest
-RUN apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+RUN apt-get -y install  ca-certificates curl gnupg
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 RUN apt-get -y install docker-ce=18.03.1~ce-0~ubuntu
