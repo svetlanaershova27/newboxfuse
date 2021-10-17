@@ -17,8 +17,7 @@ RUN export PATH
 
 # Install openjdk
 RUN apt install openjdk-8-jdk -y && \
-        apt install ant -y && \
-        apt-get clean;
+        apt install ant -y &&
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
