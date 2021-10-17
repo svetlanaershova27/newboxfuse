@@ -25,7 +25,7 @@ COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 
 # Install docker
-RUN apt-get install docker-ce docker-ce-cli containerd.io
+RUN dpkg -i https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.2.10-3_amd64.deb
 # Clear cache
 RUN apt-get clean
 
