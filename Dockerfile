@@ -1,31 +1,7 @@
-FROM ubuntu:latest
-
-# Install packages
-RUN apt-get update
-
-# Install ssh
-RUN apt-get -y install openssh-client
-
-# Configure ssh client
-COPY id_rsa.pub /root/.ssh/id_rsa.pub
-RUN chmod 600 /root/.ssh/id_rsa.pub
-
-# Install maven 3.8.3
-RUN apt install maven -y
-ENV PATH /usr/share/maven/bin
-RUN export PATH
-
-# Install tomcat9
+FROM maven:3.6.0-jdk-7-alpine as built
+WORKDIR /tmp/
+COPY src ./src
+COPY pom.xml .
+RUN mvn clean package
 FROM tomcat:9.0-alpine
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
-
-# Install docker
-FROM openjdk:11
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-RUN curl -fsSL https://get.docker.com -o get-docker.sh
-RUN sh get-docker.sh
-# Clear cache
-RUN apt-get clean
-
+COPY --from=built /tmp/target/hello-1.0.war /usr/local/tomcat/webapps/hello-1.0.war
